@@ -28,7 +28,7 @@ class _MyApp extends State<MyApp> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: Scaffold(
-          appBar: Header(viewCtrl: viewCtrl.viewSink),
+          appBar: Header(),
           body: View(viewCtrl: viewCtrl.viewStream),
           bottomNavigationBar: Footer(viewCtrl: viewCtrl.viewSink),
         ));

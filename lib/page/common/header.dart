@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 
-class Header extends StatefulWidget with PreferredSizeWidget {
-  final Sink<int> viewCtrl;
+// Headerの非状態クラス
+//
+// 以下の責務を持つ
+// ・Headerを表示する
+class Header extends StatelessWidget with PreferredSizeWidget {
+  const Header({Key? key}) : super(key: key);
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
-
-  Header({Key? key, required this.viewCtrl}) : super(key: key);
-
-  @override
-  _Header createState() => _Header();
-}
-
-class _Header extends State<Header> {
-  int pageIndex = 0;
-
-  var titles = const ['ホーム', '資格リスト', '設定'];
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(title: Text(titles.elementAt(pageIndex)));
+    return AppBar(title: const Text('資格管理'));
   }
 }

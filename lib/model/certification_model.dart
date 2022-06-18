@@ -1,3 +1,7 @@
+// Certification情報のモデルクラス
+//
+// 以下の責務を持つ
+// ・取得済みのCertificationを表す
 class CertificationModel {
   late int _id;
   late String _name;
@@ -12,7 +16,7 @@ class CertificationModel {
   DateTime get outdateDate => _outdateDate;
 
   set id(int i) {
-    _id = id;
+    _id = i;
   }
 
   set name(String s) {
@@ -36,7 +40,7 @@ class CertificationModel {
   CertificationModel.fromJson(Map json) {
     id = json['id'];
     name = json['name'];
-    obtainedDate = json['obtainedDate'];
-    outdateDate = json['outdateDate'];
+    obtainedDate = DateTime.parse(json['obtainedDate']);
+    outdateDate = DateTime.parse(json['outdateDate']);
   }
 }

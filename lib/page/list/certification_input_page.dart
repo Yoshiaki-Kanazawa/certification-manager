@@ -1,7 +1,3 @@
-// Certification入力画面のクラス
-//
-// 以下の責務を持つ
-// ・Certification入力画面の状態を生成する
 import 'package:certification_manager/logic/certification_list_store.dart';
 import 'package:certification_manager/model/certification_model.dart';
 import 'package:certification_manager/page/common/header.dart';
@@ -10,6 +6,10 @@ import 'package:flutter/material.dart';
 
 import '../../util/disable_focus_node.dart';
 
+// Certification入力画面のクラス
+//
+// 以下の責務を持つ
+// ・Certification入力画面の状態を生成する
 class CertificationInputPage extends StatefulWidget {
   // certificationのモデル
   final CertificationModel? certification;
@@ -41,13 +41,13 @@ class _CertificationInputPageState extends State<CertificationInputPage> {
   // 画面項目：取得日
   late DateTime _obtainedDate;
 
-  // 画面項目：期限
+  // 画面項目：有効期限
   late DateTime _outdateDate;
 
   // 取得日入力初期値
   DateTime selectedObtainedDate = DateTime.now();
 
-  // 期限入力初期値
+  // 有効期限入力初期値
   DateTime selectedOutdateDate = DateTime.now();
 
   // 初期処理を行う
@@ -114,11 +114,11 @@ class _CertificationInputPageState extends State<CertificationInputPage> {
               onTap: () => _selectDate(context, ApplicationConst().obtainedDateLabel),
             ),
             const SizedBox(height: 20),
-            // 取得日のテキストフィールド
+            // 有効期限のテキストフィールド
             TextField(
               focusNode: AlwaysDisabledFocusNode(),
               decoration: const InputDecoration(
-                labelText: "期限",
+                labelText: "有効期限",
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.blue,
@@ -180,6 +180,7 @@ class _CertificationInputPageState extends State<CertificationInputPage> {
     );
   }
 
+  // 日付選択の処理
   Future<Null> _selectDate(BuildContext context, String label) async {
     final DateTime? picked = await showDatePicker(
       context: context,

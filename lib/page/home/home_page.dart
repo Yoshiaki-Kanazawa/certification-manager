@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// ホーム画面の非状態クラス
+//
+// 以下の責務を持つ
+// ・ホーム画面を表示する
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   @override

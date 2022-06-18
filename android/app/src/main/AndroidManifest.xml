@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.certification_manager">
    <application
-        android:label="certification_manager"
+        android:label="資格管理"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
