@@ -91,27 +91,49 @@ class _CertificationListPage extends State<CertificationListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(
-              padding: const EdgeInsets.only(
-                top: 0,
-                bottom: 0,
-                left: 10,
-                right: 10,
-              ),
-              child: DropdownButton<String>(
-                items: _sortItems,
-                onChanged: (value) {
-                  setState(() {
-                    _isSelectedItem = value;
-                    _sortCertificationListBySortOrder(_isSelectedItem!);
-                  });
-                },
-                value: _isSelectedItem,
-              )),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Padding(
+                padding: const EdgeInsets.only(
+                  top: 0,
+                  bottom: 0,
+                  left: 10,
+                  right: 10,
+                ),
+                child: DropdownButton<String>(
+                  icon: const Icon(
+                    Icons.arrow_drop_down,
+                    color: Colors.blue,
+                  ),
+                  underline: Container(
+                    height: 1,
+                    color: Colors.blue,
+                  ),
+                  items: _sortItems,
+                  onChanged: (value) {
+                    setState(() {
+                      _isSelectedItem = value;
+                      _sortCertificationListBySortOrder(_isSelectedItem!);
+                    });
+                  },
+                  value: _isSelectedItem,
+                )),
+            IconButton(
+              onPressed: () {
+                Future(
+                  () async {
+                    setState(() => {});
+                  },
+                );
+              },
+              icon: const Icon(Icons.autorenew),
+              color: Colors.blue,
+              iconSize: 25,
+            )
+          ]),
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: _store.count(),
+            itemCount: _store.certificationList.length,
             itemBuilder: (BuildContext context, int index) {
               var item = _store.findByIndex(index);
               return Slidable(

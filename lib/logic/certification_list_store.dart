@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:certification_manager/model/certification_model.dart';
 
 // Certification情報の管理クラス
@@ -24,19 +25,19 @@ class CertificationListStore {
 
   List<CertificationModel> get certificationList => _certificationList;
 
-  // Certificationの件数を取得する
-  int count() {
-    return _certificationList.length;
-  }
-
   // 指定したインデックスのCertificationを取得する
   CertificationModel findByIndex(int index) {
     return _certificationList[index];
   }
 
+  // 有効期限が指定した期間（月）以内のCertificationを取得する
+  List<CertificationModel> findByTermUntilExpiration(int term) {
+    return _certificationList.where((certification) => certification.outdateDate.isBefore(Jiffy(DateTime.now()).add(months: term).dateTime)).toList();
+  }
+
   // Certificationを追加する
   void add(String name, DateTime obtainedDate, DateTime outdateDate) {
-    var id = count() == 0 ? 1 : _certificationList.last.id + 1;
+    var id = certificationList.length == 0 ? 1 : _certificationList.last.id + 1;
     var certification = CertificationModel(id, name, obtainedDate, outdateDate);
     _certificationList.add(certification);
 
