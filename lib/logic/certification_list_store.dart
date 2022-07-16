@@ -37,7 +37,7 @@ class CertificationListStore {
 
   // Certificationを追加する
   void add(String name, DateTime obtainedDate, DateTime outdateDate) {
-    var id = certificationList.length == 0 ? 1 : _certificationList.last.id + 1;
+    var id = _certificationList.isEmpty ? 1 : _certificationList.last.id + 1;
     var certification = CertificationModel(id, name, obtainedDate, outdateDate);
     _certificationList.add(certification);
 
